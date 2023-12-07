@@ -30,6 +30,7 @@ jobs:
 
 
     my_test_job:
+      needs: [my_build_job]
       runs-on: ubuntu-latest
       steps:
           - name: doing smth
