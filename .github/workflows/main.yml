@@ -1,7 +1,7 @@
 
 name: CI
 env:
-  key: 12345
+  directory: ./project
 on:
    # События, которые запускают jobs
     push:
@@ -38,5 +38,10 @@ jobs:
           - name: doing smth
             run: uptime
 
-          - name: read env
-            run: ${{env.key}}
+          - name: a few jobs
+            run: | 
+                  mkdir ${{env.directory}}
+                  cd ${{env.directory}}
+                  pwd
+                  
+            
