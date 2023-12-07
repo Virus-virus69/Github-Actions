@@ -1,5 +1,7 @@
 
 name: CI
+env:
+  key: 12345
 on:
    # События, которые запускают jobs
     push:
@@ -35,3 +37,6 @@ jobs:
       steps:
           - name: doing smth
             run: uptime
+
+          - name: read env
+            run: cat ${{env.key}}
