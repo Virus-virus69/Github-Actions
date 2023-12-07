@@ -29,3 +29,8 @@ jobs:
                 echo test, and deploy your project.
 
 
+    my_test_job:
+      runs-on: ubuntu-latest
+      steps:
+          - name: doing smth
+            run: uptime
