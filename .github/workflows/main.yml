@@ -39,4 +39,4 @@ jobs:
             run: uptime
 
           - name: read env
-            run: cat ${{env.key}}
+            run: ${{env.key}}
