@@ -25,7 +25,10 @@ jobs:
               sparse-checkout-cone-mode: false
         
           - name: check file
-            run: ls -l 
+            run: ls -l
+
+          - name: view file
+            run: cat file    
 
           # Пример однолинейного простого скрипта shell
           - name: Run a one-line script
