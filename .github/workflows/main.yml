@@ -28,7 +28,10 @@ jobs:
             run: ls -l
 
           - name: view file
-            run: cat file    
+            run: 
+              pwd
+              echo ''
+              cat file    
 
           # Пример однолинейного простого скрипта shell
           - name: Run a one-line script
