@@ -18,7 +18,14 @@ jobs:
         # Шаги
       steps:
           # Actions от github: проверяет репозиторий, гит и т.д.
-          
+          - uses: actions/checkout@v4
+            with:
+              sparse-checkout: |
+                file
+              sparse-checkout-cone-mode: false
+        
+          - name: check file
+            run: ls -l 
 
           # Пример однолинейного простого скрипта shell
           - name: Run a one-line script
