@@ -28,7 +28,7 @@ jobs:
             run: ls -l
 
           - name: view file
-            run: 
+            run: | 
               pwd
               echo ''
               cat file    
