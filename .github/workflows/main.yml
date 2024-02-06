@@ -29,6 +29,7 @@ jobs:
 
           - name: view file
             run: | 
+              cd /src
               pwd
               echo ''
               cat file    
