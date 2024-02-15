@@ -38,7 +38,9 @@ jobs:
             run: sudo apt install gcc -y
 
           - name: build package
-            run: dpkg-deb --build ./package    
+            run: |
+              ls -l 
+              dpkg-deb --build ./package    
 
           # Пример однолинейного простого скрипта shell
           - name: Run a one-line script
