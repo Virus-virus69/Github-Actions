@@ -84,4 +84,8 @@ jobs:
                   cd ${{env.directory}}
                   pwd
                   
-            
+          - name: isntall/test package
+            run: | 
+              sudo apt-get install ./package.deb
+              buildpackage
+ 
