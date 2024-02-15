@@ -22,8 +22,7 @@ jobs:
             with:
               sparse-checkout: |
                 src
-              
-        
+               
           - name: check file
             run: ls -l
 
