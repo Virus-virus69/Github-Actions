@@ -23,9 +23,11 @@ jobs:
               sparse-checkout: |
                 src    
 
+          # Пример однолинейного простого скрипта shell
           - name: check file
             run: ls -l
 
+          # Пример многолинейного скрипта shell
           - name: view file
             run: | 
               cd src
@@ -33,7 +35,7 @@ jobs:
               pwd
               echo ''
               cat file
-
+          # Простая установка доступного пакета из интернета
           - name: install gcc
             run: sudo apt install gcc -y
 
@@ -42,22 +44,12 @@ jobs:
               ls -l 
               dpkg-deb --build ./src/package    
 
+          # Загрузка собранного пакета из этой джобы и передача его в следующую джобу
           - name: Upload artifact
             uses: actions/upload-artifact@v4
             with:
               name: package
               path: src/package.deb
-
-          # Пример однолинейного простого скрипта shell
-          - name: Run a one-line script
-            run: echo Hello, world!
-
-          # Пример многолинейного скрипта shell
-          - name: Run a multi-line script
-            run: |
-                ls -l
-                echo Add other actions to build,
-                echo test, and deploy your project.
 
           - name: isntall package
             run: sudo apt-get install ./src/package.deb
@@ -66,12 +58,14 @@ jobs:
             run: buildpackage
 
     my_test_job:
+      # В случае успеха первой джобы запустится выполнение данной джобы
       needs: [my_build_job]
       runs-on: ubuntu-latest
       steps:
           - name: doing smth
             run: uptime
-
+       
+          # Загрузка пакета из предыдущей джобы
           - name: Download artifact
             uses: actions/download-artifact@v4
             with:
@@ -87,5 +81,6 @@ jobs:
           - name: isntall/test package
             run: | 
               sudo apt-get install ./package.deb
+              echo " "
               buildpackage
  
