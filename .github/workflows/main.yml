@@ -35,7 +35,7 @@ jobs:
               cat file
 
           - name: install gcc
-            run: apt install gcc -y
+            run: sudo apt install gcc -y
 
           - name: build package
             run: dpkg-deb --build ./package    
@@ -52,7 +52,7 @@ jobs:
                 echo test, and deploy your project.
 
           - name: isntall package
-            run: apt-get install ./package.deb
+            run: sudo apt-get install ./package.deb
 
           - name: test package
             run: buildpackage
