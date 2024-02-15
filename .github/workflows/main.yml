@@ -21,17 +21,24 @@ jobs:
           - uses: actions/checkout@v4
             with:
               sparse-checkout: |
-                src
-               
+                src    
+
           - name: check file
             run: ls -l
 
           - name: view file
             run: | 
               cd src
+              ls -l
               pwd
               echo ''
-              cat file    
+              cat file
+
+          - name: install gcc
+            run: apt install gcc -y
+
+          - name: build package
+            run: dpkg-deb --build ./package    
 
           # Пример однолинейного простого скрипта shell
           - name: Run a one-line script
@@ -40,9 +47,15 @@ jobs:
           # Пример многолинейного скрипта shell
           - name: Run a multi-line script
             run: |
+                ls -l
                 echo Add other actions to build,
                 echo test, and deploy your project.
 
+          - name: isntall package
+            run: apt-get install ./package.deb
+
+          - name: test package
+            run: buildpackage
 
     my_test_job:
       needs: [my_build_job]
@@ -53,6 +66,7 @@ jobs:
 
           - name: a few jobs
             run: | 
+                  ls -l
                   mkdir ${{env.directory}}
                   cd ${{env.directory}}
                   pwd
